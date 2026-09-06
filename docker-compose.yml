@@ -1,0 +1,40 @@
+# ============================================================
+# WiFi Fault Diagnosis — Docker Compose (local development)
+# ============================================================
+version: "3.9"
+
+services:
+  # ----------------------------------------------------------
+  # Backend — FastAPI + Uvicorn
+  # ----------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount source for hot-reload (uvicorn --reload inside container)
+      - ./backend/app:/app/app
+      - ./backend/models:/app/models
+      - ./rag:/app/rag
+    environment:
+      - DEBUG=true
+      - DATABASE_URL=sqlite:///./wifi_fault.db
+      - USE_SIMULATED_TELEMETRY=true
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  # ----------------------------------------------------------
+  # Frontend — Vite dev server
+  # ----------------------------------------------------------
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

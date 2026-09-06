@@ -1,0 +1,70 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+pip-log.txt
+*.egg-info/
+dist/
+build/
+
+# -------------------------
+# Environment variables
+# -------------------------
+.env
+.env.local
+.env.production
+
+# -------------------------
+# Node / Frontend
+# -------------------------
+node_modules/
+dist/
+.cache/
+*.tsbuildinfo
+
+# -------------------------
+# ML models and large files
+# -------------------------
+backend/models/*.pkl
+backend/models/*.joblib
+ml/models/*.pkl
+ml/data/raw/
+ml/data/processed/
+
+# -------------------------
+# Database
+# -------------------------
+*.db
+*.sqlite3
+
+# -------------------------
+# Vector store
+# -------------------------
+rag/vectorstore/
+backend/app/rag/vectorstore/
+
+# -------------------------
+# IDE / OS
+# -------------------------
+.vscode/settings.json
+.idea/
+*.DS_Store
+Thumbs.db
+
+# -------------------------
+# Docker
+# -------------------------
+docker-compose.override.yml
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+logs/

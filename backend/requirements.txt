@@ -14,10 +14,11 @@ joblib>=1.4.0
 sqlalchemy>=2.0.0
 aiosqlite>=0.20.0  # async SQLite for development
 
-# RAG / LLM (install when building the RAG layer)
-# langchain>=0.2.0
-# openai>=1.30.0
-# faiss-cpu>=1.8.0
+# RAG / LLM
+# langchain>=0.2.0          # uncomment when the generator (LLM) layer is built
+# openai>=1.30.0            # uncomment when using OpenAI LLM
+faiss-cpu>=1.8.0
+sentence-transformers>=3.0.0
 
 # Testing
 pytest>=8.2.0

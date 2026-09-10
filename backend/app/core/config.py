@@ -1,4 +1,4 @@
-﻿"""Centralised application configuration loaded from environment variables."""
+"""Centralised application configuration loaded from environment variables."""
 
 from typing import List
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -63,7 +63,10 @@ class Settings(BaseSettings):
     LLM_PROVIDER: str = "openai"          # openai | ollama | huggingface
     LLM_MODEL: str = "gpt-3.5-turbo"
     LLM_API_KEY: str = ""
-    EMBEDDING_MODEL: str = "text-embedding-ada-002"
+    # Local Sentence-Transformers model used by the RAG retrieval pipeline.
+    # Override via .env (e.g. EMBEDDING_MODEL=all-mpnet-base-v2) to swap models.
+    EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"
+    DOCUMENTS_PATH: str = "rag/documents"
     VECTORSTORE_PATH: str = "rag/vectorstore"
 
     # -----------------------------------------------------------------------

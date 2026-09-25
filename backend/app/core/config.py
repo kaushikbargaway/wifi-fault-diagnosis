@@ -55,6 +55,7 @@ class Settings(BaseSettings):
     DT_VM2_HOST: str = "192.168.56.102"
     DT_VM2_PORT: int = 22
     DT_SSH_USER: str = "ubuntu"
+    DT_SSH_PASSWORD: str = "ubuntu123"   # VM password set during Ubuntu installation
     DT_SSH_KEY_PATH: str = "~/.ssh/id_rsa"
 
     # -----------------------------------------------------------------------

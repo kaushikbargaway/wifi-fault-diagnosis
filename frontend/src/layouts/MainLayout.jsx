@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import {
   LayoutDashboard,
@@ -27,7 +27,7 @@ function MainLayout() {
       <aside className={styles.sidebar}>
         <div className={styles.logo}>
           <Wifi size={22} />
-          <span>WiFi Dx</span>
+          <span>TwinNet</span>
         </div>
         <nav className={styles.nav}>
           {NAV_LINKS.map(({ to, label, icon: Icon }) => (

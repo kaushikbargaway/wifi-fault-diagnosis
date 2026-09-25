@@ -1,13 +1,25 @@
-﻿"""WiFi Fault Diagnosis System — FastAPI application entry point."""
+"""WiFi Fault Diagnosis System — FastAPI application entry point."""
 
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import health, telemetry, diagnosis, digital_twin, recovery, explanation
 from app.core.config import settings
 from app.core.logging import configure_logging
+from app.database.connection import init_db
 
 configure_logging()
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Startup and shutdown events."""
+    # Startup — create database tables
+    init_db()
+    yield
+    # Shutdown — nothing to clean up for SQLite
+
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -15,6 +27,7 @@ app = FastAPI(
     version=settings.VERSION,
     docs_url="/docs",
     redoc_url="/redoc",
+    lifespan=lifespan,
 )
 
 # ---------------------------------------------------------------------------
